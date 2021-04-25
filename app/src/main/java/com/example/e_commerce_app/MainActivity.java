@@ -16,6 +16,7 @@ import com.example.e_commerce_app.model.Model;
 import com.example.e_commerce_app.view.CartFragment;
 import com.example.e_commerce_app.view.HomeFragment;
 import com.example.e_commerce_app.viewmodel.ProductViewModel;
+import com.example.e_commerce_app.viewmodel.RetrofitViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     ProductViewModel productViewModel;
+    RetrofitViewModel retrofitViewModel;
 
 
     @Override
@@ -33,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         productViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
-
+ //       productViewModel.init(this.getApplication());
+        retrofitViewModel = ViewModelProviders.of(this).get(RetrofitViewModel.class);
 
         bottomNavigationView = findViewById(R.id.button_nav);
 //        bottomNavigationView.setSelectedItemId(R.id.home);
@@ -61,20 +64,26 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        retrofitViewModel.makeApiCall();
+
     }
 
-    public void itemclick(int position) {
-        productViewModel.getAllProducts().observe(this, new Observer<List<Model>>() {
-            @Override
-            public void onChanged(List<Model> list) {
-                CartFragment ldf = new CartFragment ();
-                Bundle args = new Bundle();
-                args.putString("YourKey", String.valueOf(list));
-                ldf.setArguments(args);
 
-//Inflate the fragment
-                getSupportFragmentManager().beginTransaction().add(R.id.container, ldf).commit();
-            }
-        });
-    }
+//    public void itemclick(int position) {
+//        productViewModel.getAllProducts().observe(this, new Observer<List<Model>>() {
+//            @Override
+//            public void onChanged(List<Model> list) {
+//                CartFragment ldf = new CartFragment ();
+//                Bundle args = new Bundle();
+//                args.putString("YourKey", String.valueOf(list));
+//                ldf.setArguments(args);
+//
+////Inflate the fragment
+//                getSupportFragmentManager().beginTransaction().add(R.id.container, ldf).commit();
+//            }
+//        });
+//    }
+
+
 }

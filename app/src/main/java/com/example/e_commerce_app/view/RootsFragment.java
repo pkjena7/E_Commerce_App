@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,6 +22,7 @@ import com.example.e_commerce_app.R;
 import com.example.e_commerce_app.adapter.RootAdapter;
 import com.example.e_commerce_app.model.Model;
 import com.example.e_commerce_app.viewmodel.ProductViewModel;
+import com.example.e_commerce_app.viewmodel.RetrofitViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +38,7 @@ public class RootsFragment extends Fragment {
     Boolean isScrolling = false;
     int currentitems, scrolledItems, totalitems;
     ProgressBar progressBar;
+    private RetrofitViewModel retrofitViewModel;
 
 
 
@@ -51,15 +54,31 @@ public class RootsFragment extends Fragment {
         recyclerView = view.findViewById(R.id.roots_recycler);
         progressBar = view.findViewById(R.id.root_progress_bar);
 
+        retrofitViewModel = ViewModelProviders.of(this).get(RetrofitViewModel.class);
+
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setHasFixedSize(true);
 
-        initData();
+//        initData();
 
         rootAdapter = new RootAdapter(context, itemlist);
         recyclerView.setAdapter(rootAdapter);
+
+
+        retrofitViewModel.getProductListObserver().observe(getViewLifecycleOwner(), new Observer<List<Model>>() {
+            @Override
+            public void onChanged(List<Model> list) {
+                if (list!=null)
+                {
+                    itemlist = list;
+                    rootAdapter.setRootList(itemlist);
+                }
+            }
+        });
+
+//        retrofitViewModel.makeApiCall();
 
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -81,7 +100,7 @@ public class RootsFragment extends Fragment {
 
                 if (isScrolling && (currentitems + scrolledItems == totalitems)) {
                     isScrolling = false;
-                    fetchdata();
+//                    fetchdata();
                 }
             }
         });

@@ -24,9 +24,9 @@ TextView textView;
 
         textView=view.findViewById(R.id.cartview);
 
-        String value = getArguments().getString("YourKey");
+//        String value = getArguments().getString("YourKey");
 
-        textView.setText(value);
+//        textView.setText(value);
 
         return  view;
     }

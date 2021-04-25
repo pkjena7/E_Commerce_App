@@ -33,8 +33,11 @@ public class RootAdapter extends RecyclerView.Adapter<RootAdapter.ViewHolder> {
     public RootAdapter(Context context, List<Model> itemlist) {
         this.context = context;
         this.itemlist = itemlist;
+    }
 
-
+    public void setRootList(List<Model> rootList) {
+        this.itemlist = rootList;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -73,21 +76,24 @@ public class RootAdapter extends RecyclerView.Adapter<RootAdapter.ViewHolder> {
             }
         });
 
-        holder.button_addtocart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(context instanceof MainActivity) {
-                    ((MainActivity)context).itemclick(position);
-                }
-            }
-        });
+//        holder.button_addtocart.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(context instanceof MainActivity) {
+//                    ((MainActivity)context).itemclick(position);
+//                }
+//            }
+//        });
 
     }
 
 
     @Override
     public int getItemCount() {
-        return itemlist.size();
+        if(this.itemlist != null) {
+            return this.itemlist.size();
+        }
+        return 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
