@@ -80,6 +80,7 @@ public class RootsFragment extends Fragment {
 
 //        retrofitViewModel.makeApiCall();
 
+        //  pagination start
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -106,60 +107,12 @@ public class RootsFragment extends Fragment {
         });
 
 
+        // pagination end
+
+
         return view;
     }
 
-    private List<Model> fetchdata() {
-        progressBar.setVisibility(View.VISIBLE);
-        itemlist = new ArrayList<>();
-        itemlist.add(new Model(R.drawable.ic_launcher_background, "Tamato", 20, 1));
-        itemlist.add(new Model(R.drawable.ic_launcher_background, "Tamato", 20, 1));
-        itemlist.add(new Model(R.drawable.ic_launcher_background, "Tamato", 20, 1));
-//        itemlist.add(new Model(R.drawable.ic_launcher_foreground, "Apple", 10));
-//        itemlist.add(new Model(R.drawable.ic_launcher_foreground, "Apple", 90));
-//        itemlist.add(new Model(R.drawable.ic_launcher_foreground, "Apple", 180));
-//        itemlist.add(new Model(R.drawable.ic_launcher_foreground, "Apple", 108));
-//        itemlist.add(new Model(R.drawable.ic_launcher_foreground, "Apple", 109));
-//        itemlist.add(new Model(R.drawable.ic_launcher_foreground, "Apple", 104));
-//        itemlist.add(new Model(R.drawable.ic_launcher_foreground, "Apple", 103));
-//        itemlist.add(new Model(R.drawable.ic_launcher_foreground, "Apple", 102));
-//        itemlist.add(new Model(R.drawable.ic_launcher_foreground, "Apple", 101));
-//        itemlist.add(new Model(R.drawable.ic_launcher_foreground, "Apple", 100));
-//        itemlist.add(new Model(R.drawable.ic_launcher_foreground, "Apple", 107));
-//        itemlist.add(new Model(R.drawable.ic_launcher_foreground, "Apple", 109));
-//        itemlist.add(new Model(R.drawable.ic_launcher_foreground, "Apple", 107));
-//
-//
-//        rootAdapter.notifyDataSetChanged();
-//        progressBar.setVisibility(View.GONE);
-        return itemlist;
-    }
-
-    private List<Model> initData() {
-        itemlist = new ArrayList<>();
-
-        itemlist.add(new Model(R.drawable.ic_launcher_background, "Tamato", 20, 1));
-        itemlist.add(new Model(R.drawable.ic_launcher_background, "Tamato", 20, 1));
-        itemlist.add(new Model(R.drawable.ic_launcher_background, "Tamato", 20, 1));
-        itemlist.add(new Model(R.drawable.ic_launcher_background, "Tamato", 20, 1));
-        itemlist.add(new Model(R.drawable.ic_launcher_background, "Tamato", 20, 1));
-        itemlist.add(new Model(R.drawable.ic_launcher_background, "Tamato", 20, 1));
-        itemlist.add(new Model(R.drawable.ic_launcher_background, "Tamato", 20, 1));
-        itemlist.add(new Model(R.drawable.ic_launcher_background, "Tamato", 20, 1));
-        itemlist.add(new Model(R.drawable.ic_launcher_background, "Tamato", 20, 1));
-        itemlist.add(new Model(R.drawable.ic_launcher_background, "Tamato", 20, 1));
-        itemlist.add(new Model(R.drawable.ic_launcher_background, "Tamato", 20, 1));
-        itemlist.add(new Model(R.drawable.ic_launcher_background, "Tamato", 20, 1));
-        itemlist.add(new Model(R.drawable.ic_launcher_background, "Tamato", 20, 1));
-        itemlist.add(new Model(R.drawable.ic_launcher_background, "Tamato", 20, 1));
-        itemlist.add(new Model(R.drawable.ic_launcher_background, "Tamato", 20, 1));
-        itemlist.add(new Model(R.drawable.ic_launcher_background, "Tamato", 20, 1));
-        itemlist.add(new Model(R.drawable.ic_launcher_background, "Tamato", 20, 1));
-
-        return itemlist;
-
-
-    }
 
 
 }
