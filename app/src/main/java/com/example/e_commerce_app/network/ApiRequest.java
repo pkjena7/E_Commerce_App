@@ -6,10 +6,13 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
+
 
 public interface ApiRequest {
 
-    @GET("api/v1/products?_quantity=500")
-    Call<List<Model>> getProductDetails(@Query("_quantity=500") int quantity);
+    @GET("api/v1/products")
+
+    Call<List<Model>> getProductDetails(@Query("_quantity") int quantity);
 }
