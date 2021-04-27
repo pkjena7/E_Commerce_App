@@ -32,43 +32,22 @@ public class Model {
     @ColumnInfo(name = "quantity")
     int quantity;
 
-    public Model(int image, String name, int price, int quantity) {
-        this.image = image;
-        this.name = name;
-        this.price = price;
+
+    @SerializedName("data")
+    private Data data;
+
+
+    public Model(Data data,int quantity) {
+        this.data = data;
         this.quantity = quantity;
     }
 
-    public int getProductId() {
-        return productId;
+    public Data getData() {
+        return data;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
-
-    public int getImage() {
-        return image;
-    }
-
-    public void setImage(int image) {
-        this.image = image;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
+    public void setData(Data data) {
+        this.data = data;
     }
 
     public int getQuantity() {

@@ -10,6 +10,6 @@ import retrofit2.http.Query;
 
 public interface ApiRequest {
 
-    @GET("api/v1/products")
+    @GET("api/v1/products?_quantity=500")
     Call<List<Model>> getProductDetails(@Query("_quantity=500") int quantity);
 }

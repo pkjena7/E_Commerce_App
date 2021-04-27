@@ -34,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        productViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
- //       productViewModel.init(this.getApplication());
-        retrofitViewModel = ViewModelProviders.of(this).get(RetrofitViewModel.class);
+        //productViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
+//        productViewModel.init(this.getApplication());
+//        retrofitViewModel = ViewModelProviders.of(this).get(RetrofitViewModel.class);
 
         bottomNavigationView = findViewById(R.id.button_nav);
 //        bottomNavigationView.setSelectedItemId(R.id.home);
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        retrofitViewModel.makeApiCall();
+     //   retrofitViewModel.makeApiCall();
 
     }
 

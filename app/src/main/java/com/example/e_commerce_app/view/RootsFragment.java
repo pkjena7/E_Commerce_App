@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -54,7 +55,8 @@ public class RootsFragment extends Fragment {
         recyclerView = view.findViewById(R.id.roots_recycler);
         progressBar = view.findViewById(R.id.root_progress_bar);
 
-        retrofitViewModel = ViewModelProviders.of(this).get(RetrofitViewModel.class);
+        //retrofitViewModel = ViewModelProviders.of(this).get(RetrofitViewModel.class);
+        retrofitViewModel = new ViewModelProvider(this).get(RetrofitViewModel.class);
 
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false);
@@ -62,6 +64,7 @@ public class RootsFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
 
 //        initData();
+        retrofitViewModel.makeApiCall();
 
         rootAdapter = new RootAdapter(context, itemlist);
         recyclerView.setAdapter(rootAdapter);
